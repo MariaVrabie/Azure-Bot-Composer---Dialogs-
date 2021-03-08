@@ -1,0 +1,48 @@
+# WelcomeUser()
+- Hello there, welcome!
+# adaptivecardjson()
+- ```
+
+ {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Please select one of the following options:",
+            "size": "Medium",
+            "weight": "Bolder",
+            "wrap": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.ShowCard",
+            "title": "Appointment",
+            "card": {
+                "type": "AdaptiveCard"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Apply health Card",
+            "card": {
+                "type": "AdaptiveCard"
+            }
+        },
+        {
+            "type": "Action.ShowCard",
+            "title": "Other issue",
+            "card": {
+                "type": "AdaptiveCard"
+            }
+        }
+    ]
+}
+
+```
+# AdaptiveCard()
+[Activity
+    Attachments = ${json(adaptivecardjson())}
+]

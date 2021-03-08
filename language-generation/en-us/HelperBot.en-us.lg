@@ -1,0 +1,7 @@
+[import](common.lg)
+
+# SendActivity_Welcome
+- ${WelcomeUser()}
+
+# HelpOptions()
+-I can help you with the following, please type in the nu

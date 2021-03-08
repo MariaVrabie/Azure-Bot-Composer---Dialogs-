@@ -1,0 +1,153 @@
+{
+  "$kind": "Microsoft.AdaptiveDialog",
+  "$designer": {
+    "id": "ZDiZZn",
+    "name": "TechIssues",
+    "description": ""
+  },
+  "autoEndDialog": true,
+  "defaultResultProperty": "dialog.result",
+  "triggers": [
+    {
+      "$kind": "Microsoft.OnBeginDialog",
+      "$designer": {
+        "name": "BeginDialog",
+        "description": "",
+        "id": "Wy0998"
+      },
+      "actions": [
+        {
+          "$kind": "Microsoft.DeleteProperty",
+          "$designer": {
+            "id": "lBKzt4"
+          },
+          "property": "user.choiceCategory"
+        },
+        {
+          "$kind": "Microsoft.ChoiceInput",
+          "$designer": {
+            "id": "VMgWUQ"
+          },
+          "defaultLocale": "en-us",
+          "disabled": false,
+          "maxTurnCount": 3,
+          "alwaysPrompt": false,
+          "allowInterruptions": false,
+          "unrecognizedPrompt": "",
+          "invalidPrompt": "",
+          "defaultValueResponse": "",
+          "choiceOptions": {
+            "includeNumbers": true,
+            "inlineOrMore": ", or ",
+            "inlineOr": " or ",
+            "inlineSeparator": ", "
+          },
+          "property": "user.choiceCategory",
+          "outputFormat": "value",
+          "choices": [
+            {
+              "value": "Appointments"
+            },
+            {
+              "value": "Add Dependent"
+            },
+            {
+              "value": "Apply Health Card"
+            },
+            {
+              "value": "Change Family Physician"
+            },
+            {
+              "value": "Other issue"
+            }
+          ],
+          "prompt": "${ChoiceInput_Prompt_VMgWUQ()}",
+          "recognizerOptions": {
+            "recognizeOrdinals": true,
+            "recognizeNumbers": true
+          },
+          "style": "heroCard"
+        },
+        {
+          "$kind": "Microsoft.SendActivity",
+          "$designer": {
+            "id": "zQ9NLn"
+          },
+          "activity": "${SendActivity_zQ9NLn()}"
+        },
+        {
+          "$kind": "Microsoft.SwitchCondition",
+          "$designer": {
+            "id": "tRopw2"
+          },
+          "condition": "user.choiceCategory",
+          "cases": [
+            {
+              "value": "Appointments",
+              "actions": [
+                {
+                  "$kind": "Microsoft.BeginDialog",
+                  "$designer": {
+                    "id": "qs6vye"
+                  },
+                  "activityProcessed": true,
+                  "dialog": "CategoryDialog"
+                }
+              ]
+            },
+            {
+              "value": "Add Dependent",
+              "actions": [
+                {
+                  "$kind": "Microsoft.BeginDialog",
+                  "$designer": {
+                    "id": "tOoRQf"
+                  },
+                  "activityProcessed": true,
+                  "dialog": "CategoryDialog",
+                  "options": {}
+                }
+              ]
+            },
+            {
+              "value": "Other issue",
+              "actions": [
+                {
+                  "$kind": "Microsoft.BeginDialog",
+                  "$designer": {
+                    "id": "lpBqvB"
+                  },
+                  "activityProcessed": true,
+                  "dialog": "CreateNewIssue"
+                }
+              ]
+            }
+          ],
+          "default": [
+            {
+              "$kind": "Microsoft.SendActivity",
+              "$designer": {
+                "id": "BTPnZG"
+              },
+              "activity": "${SendActivity_BTPnZG()}"
+            }
+          ]
+        },
+        {
+          "$kind": "Microsoft.RepeatDialog",
+          "$designer": {
+            "id": "iZFYZQ"
+          },
+          "activityProcessed": true
+        }
+      ],
+      "condition": "="
+    }
+  ],
+  "generator": "TechIssues.lg",
+  "recognizer": {
+    "$kind": "Microsoft.RegexRecognizer",
+    "intents": []
+  },
+  "id": "TechIssues"
+}
